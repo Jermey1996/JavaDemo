@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+</head>
+<body>
+<div class="container" style="margin: 10% auto">
+    <div class="layui-row layui-col-space20">
+        <div class="layui-col-md-offset4 layui-col-md4">
+            <h1 style="text-align: left; padding:5%; font-size:1.8em;">登录</h1>
+            <form name="" class="layui-form" action="/login" method="post" lay-filter="example">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">用户名</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入用户名" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">密码</label>
+                    <div class="layui-input-inline">
+                      <input type="password" name="password" lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                      <button type="submit" class="layui-btn" lay-submit="" lay-filter="login" name="tijiao">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="../layui/layui.js" charset="utf-8"></script>
+<script>
+  layui.use(['form', 'layedit', 'laydate'], function(){
+    var layer = layui.layer
+        ,form = layui.form
+        ,element = layui.element;
+
+    form.verify({
+      name:function (value){
+        if(value.length <= 0){
+          return '请输入用户名';
+        }
+        else if(value.length > 16){
+          return '用户名字符长度不超过16个';
+        }
+      },
+      password:function (value){
+        if(value.length <= 0){
+          return '请输入密码';
+        }
+        else if(value.length > 16){
+          return '密码长度不超过16个字符';
+        }
+      }
+    });
+  });
+
+</script>
+</body>
+</html>
